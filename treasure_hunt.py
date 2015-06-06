@@ -53,8 +53,8 @@ class Leaving(Scene):
         choice = raw_input("> ")
 
         if choice == "1":
-            return 'go_back_north'
-        elif choice == 3:
+            return 'navigate'
+        elif choice == "3":
             return 'medical'
         else:
             exit(1)
@@ -112,18 +112,40 @@ class Shovel(Scene):
             return 'key'
         else:
             print "I don't understand that!"
-            return 'start_facing_ocean'
+            return 'shovel'
 
 class Key(Scene):
 
     def enter(self):
-        print "    Key"
-        return 'treasure_chest'
+        print "As you walk down the beach, you notice a glare in the sand."
+        print "At close inspection, you see that it's an old key."
+        print "Quick, what do you do? \m"
+
+        print "1. Pick it up and put it in your pink pail."
+        print "2. Ignore it, keep walking."
+
+        choice = raw_input("> ")
+
+        if choice == "1":
+            return 'treasure_chest'
+        elif choice == "2":
+            print "You missed the treasure.  Enjoy your beach"
+            return 'leaving'
+
+        else:
+            print "Wrong choice ... try again."
+            return 'key'
 
 class TreasureChest(Scene):
 
     def enter(self):
         print "You see an old chest with a heart carved on top."
+        return 'finished'
+
+class Navigate(Scene):
+
+    def enter(self):
+        print "-------- NAVIGATE"
         return 'finished'
 
 class Finished(Scene):
@@ -143,6 +165,7 @@ class Map(object):
         'leaving': Leaving(),
         'medical': Medical(),
         'finished': Finished(),
+        'navigate': Navigate(),
     }
 
     ## Need more scenes definitions ... eg., inventory, walk on beach, etc
