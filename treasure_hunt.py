@@ -43,16 +43,18 @@ class Medical(Scene):
         ##  If no, end the game, perhaps?
 
 
-class OrNot(Scene):
+class Leaving(Scene):
 
     def enter(self):
-        print "1. Turn around and walk north along the beach."
+        print "1. Turn around and walk along the beach."
         print "2. Stare out at the ocean."
         print "3  Walk into the Gulf of Mexico until you are knee deep in the water and can feel the waves."
 
         choice = raw_input("> ")
 
-        if choice == "3":
+        if choice == "1":
+            return 'go_back_north'
+        elif choice == 3:
             return 'medical'
         else:
             exit(1)
@@ -80,15 +82,27 @@ class StartFacingOcean(Scene):
         if choice == "1" or choice == "2":
             return 'head_south_feather'
         elif choice == "3":
-		    return 'or_not'
+            return 'or_not'
         else:
             print "I don't understand that!"
             return 'start_facing_ocean'
 
-class HeadSouthFeather(Scene):
+class Glass(Scene):
 
     def enter(self):
-        print "    HeadSouthFeather"
+        print "    Glass"
+        return 'treasure_chest'
+
+class Shovel(Scene):
+
+    def enter(self):
+        print "    Shovel"
+        return 'treasure_chest'
+
+class Key(Scene):
+
+    def enter(self):
+        print "    Key"
         return 'treasure_chest'
 
 class TreasureChest(Scene):
@@ -107,9 +121,11 @@ class Map(object):
 
     scenes = {
         'start_facing_ocean': StartFacingOcean(),
-        'head_south_feather': HeadSouthFeather(),
+        'head_south_feather': Glass(),
+        'shovel': Shovel(),
+        'key': Key(),
         'treasure_chest': TreasureChest(),
-        'or_not': OrNot(),
+        'or_not': Leaving(),
         'medical': Medical(),
         'finished': Finished(),
     }
