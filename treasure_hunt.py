@@ -80,9 +80,9 @@ class StartFacingOcean(Scene):
         choice = raw_input("> ")
 
         if choice == "1" or choice == "2":
-            return 'head_south_feather'
+            return 'glass'
         elif choice == "3":
-            return 'or_not'
+            return 'leaving'
         else:
             print "I don't understand that!"
             return 'start_facing_ocean'
@@ -91,13 +91,28 @@ class Glass(Scene):
 
     def enter(self):
         print "    Glass"
-        return 'treasure_chest'
+        return 'shovel'
 
 class Shovel(Scene):
 
     def enter(self):
-        print "    Shovel"
-        return 'treasure_chest'
+        print "You continue walking along the beach and you find a small pink plastic shovel."
+        print "What would you like to do with the shovel?"
+        print "\n"
+        print "Do you:"
+        print "1. Leave it."
+        print "2. Start building a sand castle, and carve a moat around the castle."
+        print "3. Put the shovel in the bucket."
+
+        choice = raw_input(">")
+
+        if choice == "1" or choice == "2":
+            return 'glass'
+        elif choice == "3":
+            return 'leaving'
+        else:
+            print "I don't understand that!"
+            return 'start_facing_ocean'
 
 class Key(Scene):
 
@@ -121,11 +136,11 @@ class Map(object):
 
     scenes = {
         'start_facing_ocean': StartFacingOcean(),
-        'head_south_feather': Glass(),
+        'glass': Glass(),
         'shovel': Shovel(),
         'key': Key(),
         'treasure_chest': TreasureChest(),
-        'or_not': Leaving(),
+        'leaving': Leaving(),
         'medical': Medical(),
         'finished': Finished(),
     }
