@@ -66,8 +66,8 @@ class Leaving(Scene):
 class StartFacingOcean(Scene):
 
     def enter(self):
-        print "You stand barefoot with your feet in the sand on North Padre Island "
-        print "facing west to the Gulf of Mexico. Before you in the sand is a small "
+        print "You stand barefoot on North Padre Island sand"
+        print "facing west to the Gulf of Mexico. Before you, in the sand, is a small "
         print "pink bucket with your name on it. You pick it up.  A laughing seagull "
         print "flies over your head and cackles at you, dropping one of its feathers "
         print "to the south of you."
@@ -124,12 +124,12 @@ class Shovel(Scene):
         choice = raw_input(">")
 
         if choice == "1" or choice == "2":
-            return 'glass'
-        elif choice == "3":
             return 'leaving'
+        elif choice == "3":
+            return 'key'
         else:
             print "I don't understand that!"
-            return 'start_facing_ocean'
+            return 'shovel'
 
 class Key(Scene):
 
@@ -166,15 +166,12 @@ class Map(object):
 
     def __init__(self, start_scene):
         self.start_scene = start_scene
-        print "Map init"
 
     def next_scene(self, scene_name):
-        print "Map next_scene"
         val = Map.scenes.get(scene_name)
         return val
 
     def opening_scene(self):
-        print "Map opening_scene"
         return self.next_scene(self.start_scene)
 
 
