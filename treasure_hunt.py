@@ -107,9 +107,9 @@ class Shovel(Scene):
         choice = raw_input(">")
 
         if choice == "1" or choice == "2":
-            return 'glass'
-        elif choice == "3":
             return 'leaving'
+        elif choice == "3":
+            return 'key'
         else:
             print "I don't understand that!"
             return 'start_facing_ocean'
