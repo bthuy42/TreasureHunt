@@ -89,9 +89,26 @@ class StartFacingOcean(Scene):
 
 class Glass(Scene):
 
-    def enter(self):
-        print "    Glass"
-        return 'shovel'
+     def enter(self):
+        print "After getting your feather you are facing south.  You decide to walk "
+        print "in that direction and feel something in the sand with your foot. You "
+        print "bend over and pick it up.  You are holding a piece of pink beach glass "
+        print "in the shape of a heart.  You admire how beautiful it is. "
+        print "\n"
+        print "Do you:"
+        print "1. Put the heart shaped beach glass in your bucket."
+        print "2. Throw it into the ocean."
+        print "3. Drop it back onto the sand."
+
+        choice = raw_input("> ")
+
+        if choice == "2" or choice == "3":
+            return 'leaving'
+        elif choice == "1":
+            return 'shovel'
+        else:
+            print "I don't understand that!"
+            return 'glass'
 
 class Shovel(Scene):
 
