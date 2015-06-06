@@ -7,7 +7,6 @@ location = 'start_facing_ocean'
 class Scene(object):
 
     def enter(self):
-        print "This scene is not yet configured. Subclass it and implement enter()."
         exit(1)
 
 
@@ -41,29 +40,25 @@ class Medical(Scene):
         print "You are injured and must seek medical attention."
         exit(1)
 
-        ##  Do we want to add option for whether or not the player gets help?
-        ##  If yes, ...??  Continue the game
-        ##  If no, end the game, perhaps?
-
 
 class Leaving(Scene):
 
     def enter(self):
-        print "1. Turn around and walk along the beach."
+        print "1. Turn around and walk north along the beach."
         print "2. Stare out at the ocean."
         print "3  Walk into the Gulf of Mexico until you are knee deep in the water and can feel the waves."
 
         choice = raw_input("> ")
 
         if choice == "1":
-            return 'navigate'
+            print "So long.  Enjoy your walk!"
+        elif choice == "2":
+            print "Nice scenery?  See any flying fish?  Hope you like the view!"
         elif choice == "3":
             return 'medical'
-        else:
-            exit(1)
 
-        ##  Need to explore what we do for option 1 and 2 ... are we getting
-	    ##  further away from the treasure?
+        exit(1)
+
 
 
 class StartFacingOcean(Scene):
@@ -145,7 +140,7 @@ class Key(Scene):
     def enter(self):
         print "As you walk down the beach, you notice a glare in the sand."
         print "At close inspection, you see that it's an old key."
-        print "Quick, what do you do? \m"
+        print "Quick, what do you do? \n"
 
         print "1. Pick it up and put it in your pink pail."
         print "2. Ignore it, keep walking."
@@ -202,7 +197,6 @@ class Map(object):
         'finished': Finished(),
     }
 
-    ## Need more scenes definitions ... eg., inventory, walk on beach, etc
 
     def __init__(self, start_scene):
         self.start_scene = start_scene
