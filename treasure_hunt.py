@@ -96,7 +96,7 @@ class Glass(Scene):
         print "in the shape of a heart.  You admire how beautiful it is. "
         print "\n"
         print "Do you:"
-        print "1. Put the heart shaped beach glass in your bucket."
+        print "1. Put the heart shaped beach glass in your pail."
         print "2. Throw it into the ocean."
         print "3. Drop it back onto the sand."
 
@@ -119,7 +119,7 @@ class Shovel(Scene):
         print "Do you:"
         print "1. Leave it."
         print "2. Start building a sand castle, and carve a moat around the castle."
-        print "3. Put the shovel in the bucket."
+        print "3. Put the shovel in the pail."
 
         choice = raw_input(">")
 
@@ -156,7 +156,18 @@ class Key(Scene):
 class TreasureChest(Scene):
 
     def enter(self):
-        print "You see an old chest with a heart carved on top."
+        print "You walk further south until you see a sandcastle the ocean has almost "
+        print "completely washed away.  Some seashells have been used to create an X "
+        print "in the center of it that you can barely see .You get your pink plastic "
+        print "shovel out of your pail and start to dig at the X.  Your shovel hits "
+        print "something hard.  You dig it out using your hands and shovel until you "
+        print "have a small wooden treasure chest. It has a lock on the front of it. "
+        print "You try your golden jeweled key to open it, but it won't open.  You"
+        print "notice a heart shaped indentation on top of the treasure chest. "
+        print "You push your heart shaped piece of pink sea glass into the indentation "
+        print "and it fits perfectly.  You try to open the lock again with your key. "
+        print "The treasure chest opens and it is filled with gold Spanish doubloons. "
+
         return 'finished'
 
 class Navigate(Scene):
