@@ -90,10 +90,10 @@ class StartFacingOcean(Scene):
 class Glass(Scene):
 
      def enter(self):
-        print "After getting your feather you are facing south.  You decide to walk "
+        print "After getting your feather you are facing south. You decide to walk "
         print "in that direction and feel something in the sand with your foot. You "
-        print "bend over and pick it up.  You are holding a piece of pink beach glass "
-        print "in the shape of a heart.  You admire how beautiful it is. "
+        print "bend over and pick it up. You are holding a piece of pink beach glass "
+        print "in the shape of a heart. You admire how beautiful it is. "
         print "\n"
         print "Do you:"
         print "1. Put the heart shaped beach glass in your pail."
@@ -146,7 +146,7 @@ class Key(Scene):
         if choice == "1":
             return 'treasure_chest'
         elif choice == "2":
-            print "You missed the treasure.  Enjoy your beach"
+            print "You missed the treasure. Enjoy your beach"
             return 'leaving'
 
         else:
