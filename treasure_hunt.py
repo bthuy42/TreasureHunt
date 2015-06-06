@@ -1,6 +1,9 @@
 from sys import exit
 from random import randint
 
+inventory = set()
+location = 'start_facing_ocean'
+
 class Scene(object):
 
     def enter(self):
@@ -80,6 +83,7 @@ class StartFacingOcean(Scene):
         choice = raw_input("> ")
 
         if choice == "1" or choice == "2":
+            inventory.add("feather")
             return 'glass'
         elif choice == "3":
             return 'leaving'
@@ -102,10 +106,13 @@ class Glass(Scene):
 
         choice = raw_input("> ")
 
-        if choice == "2" or choice == "3":
+        if choice == "2":
             return 'leaving'
         elif choice == "1":
+            inventory.add("glass")
             return 'shovel'
+        elif choice == "3":
+            location = 'glass'
         else:
             print "I don't understand that!"
             return 'glass'
@@ -124,8 +131,10 @@ class Shovel(Scene):
         choice = raw_input(">")
 
         if choice == "1" or choice == "2":
+            location = 'shovel'
             return 'leaving'
         elif choice == "3":
+            inventory.add("shovel")
             return 'key'
         else:
             print "I don't understand that!"
@@ -144,10 +153,12 @@ class Key(Scene):
         choice = raw_input("> ")
 
         if choice == "1":
+            inventory.add("key")
             return 'treasure_chest'
         elif choice == "2":
+            location = 'key'
             print "You missed the treasure. Enjoy your beach"
-            return 'leaving'
+            return 'treasure_chest'
 
         else:
             print "Wrong choice ... try again."
@@ -167,18 +178,14 @@ class TreasureChest(Scene):
         print "You push your heart shaped piece of pink sea glass into the indentation "
         print "and it fits perfectly. You try to open the lock again with your key. "
         print "The treasure chest opens and it is filled with gold Spanish doubloons. "
+        print "\n"
 
-        return 'finished'
-
-class Navigate(Scene):
-
-    def enter(self):
-        print "-------- NAVIGATE"
         return 'finished'
 
 class Finished(Scene):
 
     def enter(self):
+        print(inventory)
         print "You are now rich! Congratulations!"
         return 'finished'
 
@@ -193,7 +200,6 @@ class Map(object):
         'leaving': Leaving(),
         'medical': Medical(),
         'finished': Finished(),
-        'navigate': Navigate(),
     }
 
     ## Need more scenes definitions ... eg., inventory, walk on beach, etc
